@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function home(){
-        $cafe = DB::table('cafe')->get();
+        $cafe = DB::table('cafe')->paginate(5);
         return view('home',['cafe' => $cafe] );
     }
     public function shop(){
-        return view('shop');
+        $cafe = DB::table('cafe')->get();
+        return view('shop',['cafe' => $cafe]);
     }
     public function forum(){
         return view('forum');
