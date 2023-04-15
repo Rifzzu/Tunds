@@ -33,4 +33,5 @@ Route::GET('/forum', [HomeController::class, 'forum']);
 Route::GET('/wishlist', [HomeController::class, 'wishlist']);
 Route::GET('/profile', [HomeController::class, 'profile']);
 
+Route::get('/detail/{id}', [HomeController::class, 'detail']);
 

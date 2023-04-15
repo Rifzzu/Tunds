@@ -13,4 +13,9 @@ class Cafe extends Model
     protected $primaryKey='idCafe';
     protected $fillable=['namaCafe', 'deskripsi', 'alamat', 'jamBuka', 'rangeHarga',
     'gambar'];
+
+    public function menu()
+    {
+    	return $this->hasMany('App\Models\Menu');
+    }
 }

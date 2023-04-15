@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Wishlist;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Cafe;
 
 class HomeController extends Controller
 {
@@ -18,10 +21,25 @@ class HomeController extends Controller
         return view('forum');
     }
     public function wishlist(){
+        $wishlist = DB::table('wishlist')->get();
         return view('wishlist');
+    }
+    public function wishlistInsert(Request $request){
+        $wish = Wishlist::create([
+            'user_id' => $request->Auth::user()->id,
+            'idCafe' => $request->dataCafe()->id,
+        ]);
+        return redirect()->route('');
+        
     }
     public function profile(){
         return view('user/profile');
+    }
+    
+    public function detail($id){
+        $cafe = DB::table('cafe')->where('idCafe', $id)->first();
+        $cafeMenu = Cafe::where('idCafe', $id)->get();
+        return view('detail', ['cafe'=>$cafe, 'cafeMenu'=>$cafeMenu]);
     }
 
 }

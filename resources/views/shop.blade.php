@@ -23,6 +23,7 @@
     <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
   <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-sticky u-sticky-be02 u-white u-header" id="sec-05a8"><div class="u-clearfix u-sheet u-sheet-1">
+    @auth
         <img class="u-image u-image-contain u-image-default u-image-1" src="{{ asset('/image/logo.png') }}" alt="" data-image-width="762" data-image-height="300">
         <nav class="u-menu u-menu-hamburger u-offcanvas u-menu-1" data-responsive-from="XL">
           <div class="menu-collapse">
@@ -130,7 +131,9 @@
 	"></path></svg></span>
   <p class="u-align-right u-custom-font u-heading-font u-text u-text-default u-text-2">{{$dataCafe->jamBuka}}<br>
   </p>
-  <p class="u-custom-font u-heading-font u-text u-text-default u-text-3">{{$dataCafe->namaCafe}}</p>
+  <p class="u-custom-font u-heading-font u-text u-text-default u-text-3">
+    <a href="/detail/{{ $dataCafe->idCafe }}">{{$dataCafe->namaCafe}}</a>
+  </p>
   <p class="u-custom-font u-heading-font u-text u-text-default u-text-4">{{$dataCafe->alamat}}</p>
           </div>
         </div>
@@ -151,5 +154,9 @@
         <span>Website Builder</span>
       </a>. 
     </section>
+    @endauth
+    @guest
+    <script>window.location = "/login";</script>
+    @endguest
   
 </body></html>
