@@ -42,4 +42,8 @@ class HomeController extends Controller
         return view('detail', ['cafe'=>$cafe, 'cafeMenu'=>$cafeMenu]);
     }
 
+    public function cafe(){
+        return Cafe::all();
+    }
+
 }
